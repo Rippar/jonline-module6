@@ -8,7 +8,7 @@ public interface BookDAO {
 	
 	boolean addBook(String title, String author, String publishingHouse, int yearOfPublishing, int pages, boolean isElectronic) throws DAOException;
 
-	boolean deleteBook(Book book) throws DAOException;
+	boolean deleteBook(int id) throws DAOException;
 
 	List<Book> checkBooks(String path) throws DAOException;
 

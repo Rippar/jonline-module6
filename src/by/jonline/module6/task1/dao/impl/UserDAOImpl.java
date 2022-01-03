@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import by.jonline.module6.task1.bean.User;
 import by.jonline.module6.task1.dao.DAOException;
 import by.jonline.module6.task1.dao.Encrypter;
 import by.jonline.module6.task1.dao.UserDAO;
@@ -33,7 +34,7 @@ public class UserDAOImpl implements UserDAO {
 
 				}
 
-				if (params[3].equals(login) && params[4].equals(Encrypter.cryptWithMD5(password))) {
+				if (params[4].equals(login) && params[5].equals(Encrypter.cryptWithMD5(password))) {
 					result = true;
 				}
 			}
@@ -51,11 +52,13 @@ public class UserDAOImpl implements UserDAO {
 
 		try (BufferedWriter writer = new BufferedWriter(
 				new FileWriter("src/by/jonline/module6/task1/source/UserInfo.txt"))) {
-			writer.write(name + " ");
-			writer.write(surname + " "); // surname
-			writer.write("false" + " "); // default - not superuser
-			writer.write(email + " "); // email
-			writer.write(Encrypter.cryptWithMD5(password) + "\n");
+
+			// подумать над тем, чтобы созданный объект book также где-то хранился
+			// default - not superuser
+			User user = new User(name, surname, email, false);
+			writer.write("id: " + user.getId() + "; имя:" + user.getName() + "; фамилия: " + user.getSurname()
+					+ "; администратор: " + user.isSuperuser() + "; email: " + user.getEmail() + "; пароль: "
+					+ Encrypter.cryptWithMD5(password) + "\n");
 
 		} catch (IOException e) {
 			throw new DAOException(e);
