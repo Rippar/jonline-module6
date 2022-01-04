@@ -48,7 +48,9 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public void registration(String name, String surname, String email, String password) throws DAOException {
+	public boolean registration(String name, String surname, String email, String password) throws DAOException {
+		
+		boolean result = false;
 
 		try (BufferedWriter writer = new BufferedWriter(
 				new FileWriter("src/by/jonline/module6/task1/source/UserInfo.txt"))) {
@@ -59,10 +61,14 @@ public class UserDAOImpl implements UserDAO {
 			writer.write("id: " + user.getId() + "; имя:" + user.getName() + "; фамилия: " + user.getSurname()
 					+ "; администратор: " + user.isSuperuser() + "; email: " + user.getEmail() + "; пароль: "
 					+ Encrypter.cryptWithMD5(password) + "\n");
+			
+			result = true;
 
 		} catch (IOException e) {
 			throw new DAOException(e);
 		}
+		
+		return result;
 
 	}
 

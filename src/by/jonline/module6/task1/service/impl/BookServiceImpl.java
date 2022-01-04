@@ -14,43 +14,46 @@ public class BookServiceImpl implements BookService {
 	private final DAOProvider provider = DAOProvider.getInstance();
 
 	@Override
-	public boolean addBook(String title, String author, String publishingHouse, int yearOfPublishing, int pages, boolean isElectronic) throws ServiceException {
+	public boolean addBook(String title, String author, String publishingHouse, int yearOfPublishing, int pages,
+			boolean isElectronic) throws ServiceException {
 
-		boolean result = false;
 		BookDAO bookDAO = provider.getBookDAO();
-		
+		boolean result = false;
+
 		try {
-			bookDAO.addBook(title, author, publishingHouse, yearOfPublishing, pages, isElectronic);
-			result = true;
-			
+			result = bookDAO.addBook(title, author, publishingHouse, yearOfPublishing, pages, isElectronic);
+
 		} catch (DAOException e) {
 			throw new ServiceException(e);
 		}
-		
+
 		return result;
 	}
 
 	@Override
-	public boolean deleteBook(Book book) throws ServiceException {
+	public boolean deleteBook(int id) throws ServiceException {
 
 		BookDAO bookDAO = provider.getBookDAO();
-		
+		boolean result = false;
+
 		try {
-			return bookDAO.deleteBook(book);
-			
+			result = bookDAO.deleteBook(id);
+
 		} catch (DAOException e) {
 			throw new ServiceException(e);
 		}
+
+		return result;
 	}
 
 	@Override
 	public List<Book> checkBooks(String path) throws ServiceException {
 
 		BookDAO bookDAO = provider.getBookDAO();
-		
+
 		try {
 			return bookDAO.checkBooks(path);
-			
+
 		} catch (DAOException e) {
 			throw new ServiceException(e);
 		}

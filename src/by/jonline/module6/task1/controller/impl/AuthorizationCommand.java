@@ -14,6 +14,7 @@ public class AuthorizationCommand implements Command {
 		UserService userService = provider.getUserService();
 		
 		boolean result;
+		
 		try {
 			result = userService.authorization(params[1], params[2]);
 		} catch (ServiceException e) {

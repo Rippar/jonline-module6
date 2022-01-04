@@ -5,6 +5,8 @@ import java.util.Map;
 
 import by.jonline.module6.task1.controller.impl.AddBookCommand;
 import by.jonline.module6.task1.controller.impl.AuthorizationCommand;
+import by.jonline.module6.task1.controller.impl.CheckBooksCommand;
+import by.jonline.module6.task1.controller.impl.DeleteBookCommand;
 import by.jonline.module6.task1.controller.impl.RegistrationCommand;
 
 public class CommandProvider {
@@ -14,7 +16,9 @@ public class CommandProvider {
 		commands.put("authorization", new AuthorizationCommand());
 		commands.put("registration", new RegistrationCommand());
 		commands.put("addBook", new AddBookCommand());
-		//еще 2 команды для book
+		commands.put("deleteBook", new DeleteBookCommand());
+		commands.put("checkBooks", new CheckBooksCommand());
+		
 	}
 
 	public Command getCommand(String commandName) {

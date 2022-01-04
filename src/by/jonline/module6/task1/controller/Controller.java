@@ -14,7 +14,6 @@ public interface Controller {
 	
 	// response - formatting string
 	
-	//дописать слой контроллера и для книг
 	
 
 }

@@ -9,7 +9,7 @@ public interface BookService {
 
 	boolean addBook(String title, String author, String publishingHouse, int yearOfPublishing, int pages, boolean isElectronic) throws ServiceException;
 
-	boolean deleteBook(Book book) throws ServiceException;
+	boolean deleteBook(int id) throws ServiceException;
 
 	List<Book> checkBooks(String path) throws ServiceException;
 

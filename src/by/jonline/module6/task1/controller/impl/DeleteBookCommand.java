@@ -2,32 +2,32 @@ package by.jonline.module6.task1.controller.impl;
 
 import by.jonline.module6.task1.controller.Command;
 import by.jonline.module6.task1.presentation.UserActionViewer;
+import by.jonline.module6.task1.service.BookService;
 import by.jonline.module6.task1.service.ServiceException;
 import by.jonline.module6.task1.service.ServiceProvider;
-import by.jonline.module6.task1.service.UserService;
 
-public class RegistrationCommand implements Command {
+public class DeleteBookCommand implements Command {
 
 	@Override
 	public String execute(String[] params) {
+
 		ServiceProvider provider = ServiceProvider.getInstance();
-		UserService userService = provider.getUserService();
+		BookService bookService = provider.getBookService();
 
 		boolean result;
 
 		try {
-			result = userService.registration(params[1], params[2], params[3], params[4]);
-
-		} catch (ServiceException e) {
+			result = bookService.deleteBook(Integer.parseInt(params[1]));
+			
+		} catch (NumberFormatException | ServiceException e) {
 			// logging(e)
-
+			
 			return "Error";
 		}
 
-		String response = UserActionViewer.registrationAnswer(result);
+		String response = UserActionViewer.deleteBookAnswer(result);
 
 		return response;
-
 	}
 
 }

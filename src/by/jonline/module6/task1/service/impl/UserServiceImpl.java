@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void registration(String name, String surname, String email, String password) throws ServiceException {
+	public boolean registration(String name, String surname, String email, String password) throws ServiceException {
 
 		String regexForPassword = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,10}$";
 
@@ -45,15 +45,15 @@ public class UserServiceImpl implements UserService {
 			UserDAO userDAO = provider.getUserDAO();
 
 			try {
-				userDAO.registration(name, surname, email, password);
+				return userDAO.registration(name, surname, email, password);
 
 			} catch (DAOException e) {
 				throw new ServiceException(e);
 			}
 
 		} else {
-			// ??какой-нибудь вывод в view что не удалось зарегаться из-за неподходящего
-			// пароля
+			
+			return false;
 		}
 	}
 
