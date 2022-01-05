@@ -19,7 +19,7 @@ public class UserDAOImpl implements UserDAO {
 		boolean result = false;
 
 		try (BufferedReader reader = new BufferedReader(
-				new FileReader("src/by/jonline/module6/task1/source/UserInfo.txt"))) {
+				new FileReader("D:/Programming/Workspace/jonline-module6/src/by/jonline/module6/task1/source/UserInfo.txt"))) {
 
 			String line = null;
 
@@ -53,7 +53,7 @@ public class UserDAOImpl implements UserDAO {
 		boolean result = false;
 
 		try (BufferedWriter writer = new BufferedWriter(
-				new FileWriter("src/by/jonline/module6/task1/source/UserInfo.txt"))) {
+				new FileWriter("D:/Programming/Workspace/jonline-module6/src/by/jonline/module6/task1/source/UserInfo.txt"))) {
 
 			// подумать над тем, чтобы созданный объект book также где-то хранился
 			// default - not superuser

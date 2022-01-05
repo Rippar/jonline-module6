@@ -6,6 +6,8 @@ import by.jonline.module6.task1.controller.Controller;
 
 
 public class UserController implements Controller{
+	
+	public final String cryptedMasterKey = "82c36833cc1c048417088e0f87be0ba";
 	private CommandProvider provider = new CommandProvider();
 
 	@Override

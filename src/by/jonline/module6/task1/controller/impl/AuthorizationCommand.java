@@ -18,6 +18,7 @@ public class AuthorizationCommand implements Command {
 		try {
 			result = userService.authorization(params[1], params[2]);
 		} catch (ServiceException e) {
+			e.printStackTrace();
 			// logging(e)
 			
 			return "Error";

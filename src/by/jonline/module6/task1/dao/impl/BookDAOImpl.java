@@ -21,7 +21,7 @@ public class BookDAOImpl implements BookDAO {
 		boolean result = false;
 
 		try (BufferedWriter writer = new BufferedWriter(
-				new FileWriter("src/by/jonline/module6/task1/source/BookCatalog.txt", true))) {
+				new FileWriter("D:/Programming/Workspace/jonline-module6/src/by/jonline/module6/task1/source/BookCatalog.txt", true))) {
 
 			// подумать над тем, чтобы созданный объект book также где-то хранился
 			Book book = new Book(title, author, publishingHouse, yearOfPublishing, pages, isElectronic);
@@ -49,7 +49,7 @@ public class BookDAOImpl implements BookDAO {
 		boolean result = false;
 
 		try (BufferedReader reader = new BufferedReader(
-				new FileReader("src/by/jonline/module6/task1/source/BookCatalog.txt"))) {
+				new FileReader("D:/Programming/Workspace/jonline-module6/src/by/jonline/module6/task1/source/BookCatalog.txt"))) {
 
 			String line = null;
 
@@ -69,7 +69,7 @@ public class BookDAOImpl implements BookDAO {
 		}
 
 		try (BufferedWriter writer = new BufferedWriter(
-				new FileWriter("src/by/jonline/module6/task1/source/BookCatalog.txt", false))) {
+				new FileWriter("D:/Programming/Workspace/jonline-module6/src/by/jonline/module6/task1/source/BookCatalog.txt", false))) {
 
 			for (String book : books) {
 				writer.write(book + "\n");
@@ -90,7 +90,7 @@ public class BookDAOImpl implements BookDAO {
 		List<Book> books = new ArrayList<Book>();
 
 		try (BufferedReader reader = new BufferedReader(
-				new FileReader("src/by/jonline/module6/task1/source/BookCatalog.txt"))) {
+				new FileReader("D:/Programming/Workspace/jonline-module6/src/by/jonline/module6/task1/source/BookCatalog.txt"))) {
 
 			String line = null;
 
