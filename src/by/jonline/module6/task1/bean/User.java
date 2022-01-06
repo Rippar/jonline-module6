@@ -12,19 +12,19 @@ public class User implements Serializable {
 	private String name;
 	private String surname;
 	private String email;
-	private boolean isSuperuser;
+
 
 	public User() {
 		id = count++;
 	}
 
-	public User(String name, String surname, String email, boolean isSuperuser) {
+	public User(String name, String surname, String email) {
 		id = count++;
 
 		this.name = name;
 		this.surname = surname;
 		this.email = email;
-		this.isSuperuser = isSuperuser;
+		
 	}
 
 	public String getName() {
@@ -51,13 +51,6 @@ public class User implements Serializable {
 		this.email = email;
 	}
 
-	public boolean isSuperuser() {
-		return isSuperuser;
-	}
-
-	public void setSuperuser(boolean isSuperuser) {
-		this.isSuperuser = isSuperuser;
-	}
 
 	public int getId() {
 		return id;
@@ -69,7 +62,6 @@ public class User implements Serializable {
 		int result = 1;
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + id;
-		result = prime * result + (isSuperuser ? 1231 : 1237);
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((surname == null) ? 0 : surname.hashCode());
 		return result;
@@ -91,8 +83,6 @@ public class User implements Serializable {
 			return false;
 		if (id != other.id)
 			return false;
-		if (isSuperuser != other.isSuperuser)
-			return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;
@@ -108,8 +98,7 @@ public class User implements Serializable {
 
 	@Override
 	public String toString() {
-		return getClass().getSimpleName() + " id=" + id + ", name=" + name + ", surname=" + surname + ", email=" + email
-				+ ", isSuperuser=" + isSuperuser;
+		return getClass().getSimpleName() + " id=" + id + ", name=" + name + ", surname=" + surname + ", email=" + email;
 	}
 
 }

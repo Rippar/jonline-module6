@@ -34,7 +34,7 @@ public class UserDAOImpl implements UserDAO {
 
 				}
 
-				if (params[4].equals(login) && params[5].equals(Encrypter.cryptWithMD5(password))) {
+				if (params[3].equals(login) && params[4].equals(Encrypter.cryptWithMD5(password))) {
 					result = true;
 				}
 			}
@@ -55,11 +55,10 @@ public class UserDAOImpl implements UserDAO {
 		try (BufferedWriter writer = new BufferedWriter(
 				new FileWriter("D:/Programming/Workspace/jonline-module6/src/by/jonline/module6/task1/source/UserInfo.txt"))) {
 
-			// подумать над тем, чтобы созданный объект book также где-то хранился
-			// default - not superuser
-			User user = new User(name, surname, email, false);
+			// подумать над тем, чтобы созданный объект user также где-то хранился
+			User user = new User(name, surname, email);
 			writer.write("id: " + user.getId() + "; имя:" + user.getName() + "; фамилия: " + user.getSurname()
-					+ "; администратор: " + user.isSuperuser() + "; email: " + user.getEmail() + "; пароль: "
+					+ "; email: " + user.getEmail() + "; пароль: "
 					+ Encrypter.cryptWithMD5(password) + "\n");
 			
 			result = true;

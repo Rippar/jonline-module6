@@ -6,9 +6,9 @@ public interface Controller {
 	// request "authorization  login password"
 	// request "registration name surname email password"
 	
-	// request "addBook title author publishingHouse yearOfPublishing pages isElectronic"
-	// request "deleteBook  bookID"
-	// request "checkBooks  filePath"
+	// request "addBook masterKey title author publishingHouse yearOfPublishing pages isElectronic"
+	// request "deleteBook masterKey  bookID"
+	// request "checkBooks filePath"
 	
 	
 	
