@@ -10,11 +10,10 @@ import by.jonline.module6.task1.service.UserService;
 public class UserServiceImpl implements UserService {
 
 	private final DAOProvider provider = DAOProvider.getInstance();
+	private final ServiceEncrypter serviceEncrypter = new ServiceEncrypterImpl();
 
 	@Override
-	public boolean authorization(String login, String password) throws ServiceException {
-		
-		ServiceEncrypter serviceEncrypter = new ServiceEncrypterImpl();
+	public boolean authorization(String login, String password) throws ServiceException {		
 
 		// логин представляет собой e-mail пользователя
 		String regexForLogin = "(\\w{6,})@(\\w+\\.)([a-z]{2,4})";
@@ -23,7 +22,7 @@ public class UserServiceImpl implements UserService {
 		// нижнего и одну цифру и быть длиной от 6 до 10 символов
 		String regexForPassword = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,10}$";
 		
-		String cryptedPassword = serviceEncrypter.cryptWithMD5(password);
+		String cryptedPassword = serviceEncrypter.getEncrypted(password);
 
 		if (login.matches(regexForLogin) && password.matches(regexForPassword)) {
 			UserDAO userDAO = provider.getUserDAO();
@@ -43,12 +42,10 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public boolean registration(String name, String surname, String email, String password) throws ServiceException {
-		
-		ServiceEncrypter serviceEncrypter = new ServiceEncrypterImpl();
 
 		String regexForPassword = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,10}$";
 		
-		String cryptedPassword = serviceEncrypter.cryptWithMD5(password);
+		String cryptedPassword = serviceEncrypter.getEncrypted(password);
 
 		if (password.matches(regexForPassword)) {
 			UserDAO userDAO = provider.getUserDAO();

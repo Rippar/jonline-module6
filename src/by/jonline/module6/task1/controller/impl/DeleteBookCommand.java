@@ -21,7 +21,7 @@ public class DeleteBookCommand implements Command {
 		boolean result;
 
 		try {
-			if (serviceEncrypter.cryptWithMD5(params[1]).equals(masterKey)) {
+			if (serviceEncrypter.getEncrypted(params[1]).equals(masterKey)) {
 				result = bookService.deleteBook(Integer.parseInt(params[2]));
 			} else {
 				return "MasterKey is needed";

@@ -9,7 +9,7 @@ public class ServiceEncrypterImpl implements ServiceEncrypter {
 	
 	private MessageDigest md;
 
-	public String cryptWithMD5(String pass) throws ServiceException {
+	public String getEncrypted(String pass) throws ServiceException {
 
 		try {
 			md = MessageDigest.getInstance("MD5");

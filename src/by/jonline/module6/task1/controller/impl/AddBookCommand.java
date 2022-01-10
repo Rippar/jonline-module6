@@ -20,7 +20,7 @@ public class AddBookCommand implements Command {
 		boolean result;
 
 		try {
-			if (serviceEncrypter.cryptWithMD5(params[1]).equals(masterKey)) {
+			if (serviceEncrypter.getEncrypted(params[1]).equals(masterKey)) {
 				result = bookService.addBook(params[2], params[3], params[4], Integer.parseInt(params[5]),
 						Integer.parseInt(params[6]), Boolean.parseBoolean(params[7]));
 			} else {
