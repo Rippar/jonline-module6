@@ -1,6 +1,7 @@
 package by.jonline.module6.task1.service;
 
 import by.jonline.module6.task1.service.impl.BookServiceImpl;
+import by.jonline.module6.task1.service.impl.ServiceEncrypterImpl;
 import by.jonline.module6.task1.service.impl.UserServiceImpl;
 
 public class ServiceProvider {
@@ -9,6 +10,7 @@ public class ServiceProvider {
 
 	private UserService userService = new UserServiceImpl();
 	private BookService bookService = new BookServiceImpl();
+	private ServiceEncrypter serviceEncrypter = new ServiceEncrypterImpl();
 
 	private ServiceProvider() {
 	}
@@ -33,4 +35,12 @@ public class ServiceProvider {
 		this.bookService = bookService;
 	}
 
+	public ServiceEncrypter getServiceEncrypter() {
+		return serviceEncrypter;
+	}
+
+	public void setServiceEncrypter(ServiceEncrypter serviceEncrypter) {
+		this.serviceEncrypter = serviceEncrypter;
+	}
+	
 }

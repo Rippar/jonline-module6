@@ -8,7 +8,6 @@ import java.io.IOException;
 
 import by.jonline.module6.task1.bean.User;
 import by.jonline.module6.task1.dao.DAOException;
-import by.jonline.module6.task1.dao.Encrypter;
 import by.jonline.module6.task1.dao.UserDAO;
 
 public class UserDAOImpl implements UserDAO {
@@ -34,7 +33,7 @@ public class UserDAOImpl implements UserDAO {
 
 				}
 
-				if (params[3].equals(login) && params[4].equals(Encrypter.cryptWithMD5(password))) {
+				if (params[3].equals(login) && params[4].equals(password)) {
 					result = true;
 				}
 			}
@@ -59,7 +58,7 @@ public class UserDAOImpl implements UserDAO {
 			User user = new User(name, surname, email);
 			writer.write("id: " + user.getId() + "; имя:" + user.getName() + "; фамилия: " + user.getSurname()
 					+ "; email: " + user.getEmail() + "; пароль: "
-					+ Encrypter.cryptWithMD5(password) + "\n");
+					+ password + "\n");
 			
 			result = true;
 

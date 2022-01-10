@@ -1,13 +1,15 @@
-package by.jonline.module6.task1.dao;
+package by.jonline.module6.task1.service.impl;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import by.jonline.module6.task1.service.ServiceEncrypter;
+import by.jonline.module6.task1.service.ServiceException;
 
-public class Encrypter {
+public class ServiceEncrypterImpl implements ServiceEncrypter {
 	
-	private static MessageDigest md;
+	private MessageDigest md;
 
-	public static String cryptWithMD5(String pass) throws DAOException {
+	public String cryptWithMD5(String pass) throws ServiceException {
 
 		try {
 			md = MessageDigest.getInstance("MD5");
@@ -21,7 +23,7 @@ public class Encrypter {
 			return sb.toString();
 			
 		} catch (NoSuchAlgorithmException e) {
-			throw new DAOException(e);
+			throw new ServiceException(e);
 		}
 
 	}
