@@ -48,7 +48,7 @@ public class UserActionViewer {
 			StringBuilder response = new StringBuilder("1 checkBooks success \n");
 
 			for (Book book : result) {
-				response.append("id:" + book.getId() + "; название книги: " + book.getTitle() + "; автор: "
+				response.append("id: " + book.getId() + "; название книги: " + book.getTitle() + "; автор: "
 						+ book.getAuthor() + "; издание: " + book.getPublishingHouse() + "; год издания: "
 						+ book.getYearOfPublishing() + "; количество страниц: " + book.getPages()
 						+ "; электронная книга: " + book.isElectronic() + "\n");

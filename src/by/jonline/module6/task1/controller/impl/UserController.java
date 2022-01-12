@@ -13,6 +13,7 @@ public class UserController implements Controller{
 	public String doAction(String request) {
 		
 		String[] params = request.split("\\s+");
+
 		String commandName = params[0];
 		
 		Command currentCommand = provider.getCommand(commandName);

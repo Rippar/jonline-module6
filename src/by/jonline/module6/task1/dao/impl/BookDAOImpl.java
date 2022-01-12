@@ -26,7 +26,7 @@ public class BookDAOImpl implements BookDAO {
 			// подумать над тем, чтобы созданный объект book также где-то хранился
 			Book book = new Book(title, author, publishingHouse, yearOfPublishing, pages, isElectronic);
 
-			writer.write("id:" + book.getId() + "; название книги: " + book.getTitle() + "; автор: " + book.getAuthor()
+			writer.write("id: " + book.getId() + "; название книги: " + book.getTitle() + "; автор: " + book.getAuthor()
 					+ "; издание: " + book.getPublishingHouse() + "; год издания: " + book.getYearOfPublishing()
 					+ "; количество страниц: " + book.getPages() + "; электронная книга: " + book.isElectronic()
 					+ "\n");
@@ -90,7 +90,7 @@ public class BookDAOImpl implements BookDAO {
 		List<Book> books = new ArrayList<Book>();
 
 		try (BufferedReader reader = new BufferedReader(
-				new FileReader("D:/Programming/Workspace/jonline-module6/src/by/jonline/module6/task1/source/BookCatalog.txt"))) {
+				new FileReader(path))) {
 
 			String line = null;
 
@@ -105,8 +105,8 @@ public class BookDAOImpl implements BookDAO {
 
 				}
 
-				books.add(new Book(params[0], params[1], params[2], Integer.parseInt(params[3]),
-						Integer.parseInt(params[4]), Boolean.parseBoolean(params[5])));
+				books.add(new Book(params[1], params[2], params[3], Integer.parseInt(params[4]),
+						Integer.parseInt(params[5]), Boolean.parseBoolean(params[6])));
 			}
 
 			return books;

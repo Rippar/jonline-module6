@@ -52,11 +52,11 @@ public class UserDAOImpl implements UserDAO {
 		boolean result = false;
 
 		try (BufferedWriter writer = new BufferedWriter(
-				new FileWriter("D:/Programming/Workspace/jonline-module6/src/by/jonline/module6/task1/source/UserInfo.txt"))) {
+				new FileWriter("D:/Programming/Workspace/jonline-module6/src/by/jonline/module6/task1/source/UserInfo.txt", true))) {
 
 			// подумать над тем, чтобы созданный объект user также где-то хранился
 			User user = new User(name, surname, email);
-			writer.write("id: " + user.getId() + "; имя:" + user.getName() + "; фамилия: " + user.getSurname()
+			writer.write("id: " + user.getId() + "; имя: " + user.getName() + "; фамилия: " + user.getSurname()
 					+ "; email: " + user.getEmail() + "; пароль: "
 					+ password + "\n");
 			

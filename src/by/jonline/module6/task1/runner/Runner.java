@@ -2,36 +2,53 @@ package by.jonline.module6.task1.runner;
 
 import by.jonline.module6.task1.controller.impl.UserController;
 
+// super admin dmitrymurzo1@gmail.com 1997rillJ2
+
+// request "authorization  login password"
+// request "registration name surname email password"
+
+// request "addBook masterKey title author publishingHouse yearOfPublishing pages isElectronic"
+// request "checkBooks filePath"
+// request "deleteBook masterKey bookID"
+
 public class Runner {
 
 	public static void main(String[] args) {
 
 		UserController controller = new UserController();
+		UserDataInput input = new UserDataInput();
 
-		String command0 = "authorization dmitrymurzo1@gmail.com 1997rillJ2"; // ввод с консоли
+		while (true) {
+			String command = input.enterFromConsole("\nВведите команду. Введите esc для выхода: ");
 
-		String response0 = controller.doAction(command0);
-		String[] params0 = response0.split("\\s+");
-
-		if (params0[0].equals("1")) {
-			String command1 = "deleteBook 1997rillJ2 2"; // ввод с консоли
-			String response1 = controller.doAction(command1);
-
-			if (response1.equals("MasterKey is needed")) {
-				System.out.println("Требуется пароль администратора для выполнения действия.");
-
-			} else if (params0[0].equals("Error")) {
-				System.out.println("Произошла ошибка запроса.");
-
-			} else {
-				System.out.println(response1);
+			if (command.equals("esc")) {
+				break;
 			}
 
-		} else if (params0[0].equals("Error")) {
-			System.out.println("Произошла ошибка запроса.");
+			String response = controller.doAction(command);
 
-		} else {
-			System.out.println("команда не распознана. Попробуйте снова.");
+			String[] params = response.split("\\s+");
+
+			if (params[0].equals("1")) {
+				
+				if(params[1].equals("checkBooks")) {
+					System.out.println(response);
+					continue;
+				}
+				System.out.println(params[1] + " " + params[2]);
+				continue;
+				
+			} else if (params[0].equals("0")) {
+				System.out.println(params[1] + " " + params[2]);
+				continue;
+				
+			} else if (response.equals("MasterKey is needed")) {
+				System.out.println("Требуется пароль администратора для выполнения действия.");
+				
+			} else {
+				System.out.println(params[0]);
+				continue;
+			}
 		}
 
 	}

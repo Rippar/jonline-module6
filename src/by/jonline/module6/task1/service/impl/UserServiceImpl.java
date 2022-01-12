@@ -21,11 +21,10 @@ public class UserServiceImpl implements UserService {
 		// пароль должен содержать как минимум одну букву верхнего регистра, одну
 		// нижнего и одну цифру и быть длиной от 6 до 10 символов
 		String regexForPassword = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,10}$";
-		
-		String cryptedPassword = serviceEncrypter.getEncrypted(password);
 
 		if (login.matches(regexForLogin) && password.matches(regexForPassword)) {
 			UserDAO userDAO = provider.getUserDAO();
+			String cryptedPassword = serviceEncrypter.getEncrypted(password);
 
 			try {
 				return userDAO.authorization(login, cryptedPassword);
@@ -44,11 +43,10 @@ public class UserServiceImpl implements UserService {
 	public boolean registration(String name, String surname, String email, String password) throws ServiceException {
 
 		String regexForPassword = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,10}$";
-		
-		String cryptedPassword = serviceEncrypter.getEncrypted(password);
 
 		if (password.matches(regexForPassword)) {
 			UserDAO userDAO = provider.getUserDAO();
+			String cryptedPassword = serviceEncrypter.getEncrypted(password);
 
 			try {
 				return userDAO.registration(name, surname, email, cryptedPassword);
