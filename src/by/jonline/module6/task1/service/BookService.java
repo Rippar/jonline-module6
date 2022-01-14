@@ -11,6 +11,6 @@ public interface BookService {
 
 	boolean deleteBook(int id) throws ServiceException;
 
-	List<Book> checkBooks(String path) throws ServiceException;
+	List<Book> checkBooks() throws ServiceException;
 
 }

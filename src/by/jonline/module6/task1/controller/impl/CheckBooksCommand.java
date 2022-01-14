@@ -20,7 +20,7 @@ public class CheckBooksCommand implements Command {
 		List<Book> result;
 
 		try {
-			result = bookService.checkBooks(params[1]);
+			result = bookService.checkBooks();
 
 		} catch (ServiceException e) {
 			// logging(e)

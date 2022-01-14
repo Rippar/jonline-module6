@@ -31,7 +31,7 @@ public class UserActionViewer {
 			return "0 addBook failure";
 		}
 	}
-	
+
 	public static String deleteBookAnswer(boolean result) {
 
 		if (result) {

@@ -47,12 +47,12 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public List<Book> checkBooks(String path) throws ServiceException {
+	public List<Book> checkBooks() throws ServiceException {
 
 		BookDAO bookDAO = provider.getBookDAO();
 
 		try {
-			return bookDAO.checkBooks(path);
+			return bookDAO.checkBooks();
 
 		} catch (DAOException e) {
 			throw new ServiceException(e);

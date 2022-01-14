@@ -10,6 +10,6 @@ public interface BookDAO {
 
 	boolean deleteBook(int id) throws DAOException;
 
-	List<Book> checkBooks(String path) throws DAOException;
+	List<Book> checkBooks() throws DAOException;
 
 }

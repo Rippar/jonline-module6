@@ -13,7 +13,7 @@ public class UserServiceImpl implements UserService {
 	private final ServiceEncrypter serviceEncrypter = new ServiceEncrypterImpl();
 
 	@Override
-	public boolean authorization(String login, String password) throws ServiceException {		
+	public boolean authorization(String login, String password) throws ServiceException {
 
 		// логин представляет собой e-mail пользователя
 		String regexForLogin = "(\\w{6,})@(\\w+\\.)([a-z]{2,4})";
@@ -56,7 +56,7 @@ public class UserServiceImpl implements UserService {
 			}
 
 		} else {
-			
+
 			return false;
 		}
 	}
